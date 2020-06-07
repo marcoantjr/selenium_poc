@@ -9,7 +9,7 @@ public class BasePage {
 	protected WebDriver driver;
 	
 	public BasePage(){
-		driver = DriverFactory.getDriver();
+		driver = DriverManager.getDriver();
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
 	}
 	

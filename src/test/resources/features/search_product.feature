@@ -2,7 +2,7 @@ Feature: Search Product
   Search a product in ecommerce
 
 Background:
-	Given I enter into an ecommerce
+	Given I enter into Magazine Luiza
 
 Scenario: a valid product
     When search for a valid product

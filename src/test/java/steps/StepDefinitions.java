@@ -1,7 +1,5 @@
 package steps;
 
-import org.openqa.selenium.WebDriver;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -11,13 +9,12 @@ import pages.ProductPage;
 import pages.ShoppingCartPage;
 
 public class StepDefinitions {
-	WebDriver driver;
 	HomePage homePage;
 	ProductListPage productListPage;
 	ProductPage productPage;
 	ShoppingCartPage shoppingCartPage;
 	
-	@Given("I enter into an ecommerce")
+	@Given("I enter into Magazine Luiza")
 	public void i_enter_into_an_ecommerce() {
 		homePage = new HomePage();
 		homePage.openEcommerce();

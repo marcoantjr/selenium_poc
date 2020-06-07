@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import core.BasePage;
+import core.DataLakeClient;
 
 public class HomePage extends BasePage {
 	@FindBy(how = How.ID, using = "inpHeaderSearch")
@@ -21,19 +22,19 @@ public class HomePage extends BasePage {
 	}
 	
 	public void searchValidProduct() {
-		search("220258600");
+		search(DataLakeClient.productMap.get("valid").id);
 	}
 	
 	public void searchUnavailableProduct() {
-		search("452722000");
+		search(DataLakeClient.productMap.get("unavailable").id);
 	}
 	
 	public void searchInvalidProduct() {
-		search("220258601");
+		search(DataLakeClient.productMap.get("invalid").id);
 	}
 	
-	public void search(String product) {
-		searchField.sendKeys(product);
+	public void search(String productId) {
+		searchField.sendKeys(productId);
 		searchButton.click();
 	}
 }

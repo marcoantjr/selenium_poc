@@ -1,11 +1,16 @@
 package models;
 
-import java.util.Optional;
-
 public class Product {
+	public String id;
+	public String name;
 	
-	String id;
-	Optional<String> name;
-	Optional<String> cartText;
+	public Product(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 	
+	
+	public String toString() {
+    return "[" + id + " - " + name + "]";
+}
 }

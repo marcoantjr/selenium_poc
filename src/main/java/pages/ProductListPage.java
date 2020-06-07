@@ -1,10 +1,15 @@
 package pages;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import core.BasePage;
+import core.DataLakeClient;
 
 public class ProductListPage extends BasePage {
 	@FindBy(how = How.CSS, using = "li[id^='nm-product']")
@@ -23,11 +28,11 @@ public class ProductListPage extends BasePage {
 	}
 	
 	public void checkQuantity() {
-		System.out.println(productQuantityText.getText());
+		assertEquals(productQuantityText.getText(), "0");
 	}
 	
 	public void checkErrorMessage() {
-		System.out.println(productNotFoundText.getText());
+		assertThat(productNotFoundText.getText(),
+		    containsString("Sua busca por " + DataLakeClient.productMap.get("invalid").id + " não encontrou resultado algum"));
 	}
-	
 }
