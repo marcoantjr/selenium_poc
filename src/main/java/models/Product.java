@@ -9,8 +9,7 @@ public class Product {
 		this.name = name;
 	}
 	
-	
 	public String toString() {
-    return "[" + id + " - " + name + "]";
-}
+		return "[" + id + " - " + name + "]";
+	}
 }

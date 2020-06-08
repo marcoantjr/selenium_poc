@@ -1,11 +1,13 @@
 package runners;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = { "pretty", "json:target/cucumber-reports/Cucumber.json", "html:target/cucumber-reports" },
+@CucumberOptions(plugin = { "pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber-report.json" },
     features = { "classpath:features/" }, glue = { "steps", "hooks" })
 public class RunCucumberTest {
+
 }

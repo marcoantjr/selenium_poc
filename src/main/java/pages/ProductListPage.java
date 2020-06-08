@@ -1,8 +1,7 @@
 package pages;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,15 +23,18 @@ public class ProductListPage extends BasePage {
 	}
 	
 	public void clickProduct() {
-		validProductButton.click();
+		click(validProductButton);
 	}
 	
 	public void checkQuantity() {
-		assertEquals(productQuantityText.getText(), "0");
+		assertEquals(getText(productQuantityText), "0");
 	}
 	
 	public void checkErrorMessage() {
-		assertThat(productNotFoundText.getText(),
-		    containsString("Sua busca por " + DataLakeClient.productMap.get("invalid").id + " não encontrou resultado algum"));
+		assertTrue(getText(productNotFoundText).contains(invalidResult(DataLakeClient.productMap.get("invalid").id)));
+	}
+	
+	private String invalidResult(String id) {
+		return "Sua busca por " + DataLakeClient.productMap.get("invalid").id + " não encontrou resultado algum";
 	}
 }

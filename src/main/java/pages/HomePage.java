@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
 	}
 	
 	public void openEcommerce() {
-		driver.get("http://www.magazineluiza.com.br");
+		navigateTo("http://www.magazineluiza.com.br");
 	}
 	
 	public void searchValidProduct() {
@@ -33,8 +33,8 @@ public class HomePage extends BasePage {
 		search(DataLakeClient.productMap.get("invalid").id);
 	}
 	
-	public void search(String productId) {
-		searchField.sendKeys(productId);
-		searchButton.click();
+	private void search(String productId) {
+		sendKeys(searchField, productId);
+		click(searchButton);
 	}
 }

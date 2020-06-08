@@ -1,5 +1,6 @@
 package pages;
 
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 
@@ -19,9 +20,8 @@ public class ShoppingCartPage extends BasePage {
 	}
 	
 	public void checkCart() {
-		assertThat(cartDetailText.getText(),
-		    containsString(DataLakeClient.productMap.get("valid").name));
-		assertThat(cartDetailText.getText(),
-		    containsString(DataLakeClient.productMap.get("valid").id));
+		assertThat(getText(cartDetailText),
+		    allOf(containsString(DataLakeClient.productMap.get("valid").name), 
+		    			(containsString(DataLakeClient.productMap.get("valid").id))));
 	}
 }

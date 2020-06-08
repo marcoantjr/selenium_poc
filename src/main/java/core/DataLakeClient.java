@@ -13,12 +13,19 @@ import com.google.gson.reflect.TypeToken;
 
 import models.Product;
 
+/**
+ * Classe client que representa a conexão a um data lake. No caso deste projeto, le o json mock.
+ *
+ */
 public class DataLakeClient {
 
 	private static final String MOCK_PATH = System.getProperty("user.dir") + File.separator + "mocks" + File.separator + "data_lake_mock.json";
 	
 	public static Map<String, Product> productMap;
 	
+	/**
+	 * Preenche a estrutura de produtos com as informacoes obtidas atraves do arquivo mock.
+	 */
 	public static void getData() {
 		try {
 			String mockJson = FileUtils.readFileToString(new File(MOCK_PATH), StandardCharsets.UTF_8);

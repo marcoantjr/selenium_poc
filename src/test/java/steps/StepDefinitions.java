@@ -14,8 +14,8 @@ public class StepDefinitions {
 	ProductPage productPage;
 	ShoppingCartPage shoppingCartPage;
 	
-	@Given("I enter into Magazine Luiza")
-	public void i_enter_into_an_ecommerce() {
+	@Given("I am at Magazine Luiza website")
+	public void i_am_at_magazine_luiza_website() {
 		homePage = new HomePage();
 		homePage.openEcommerce();
 	}
