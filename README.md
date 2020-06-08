@@ -50,37 +50,38 @@ O objetivo desta POC é utilizar a melhor combinação de tecnologias para criar
   
 ### Metodologias, Padrões de Projeto e Boas Práticas
 
-- PageObjects
+- **PageObjects**
   - Padrão de projeto voltado para automação de testes que atribuir responsabilidades específicas para cada página/componente do sistema. Neste padrão, cada objeto Page é responsável por funcionalidades referentes apenas ao seu propósito. Nesta POC estão criadas as Pages "HomePage", "ProductListPage", "ProductPage" e "ShoppingCartPage". Todas estas Pages, utilizando o conceito de herança, extendem a classe "BasePage" que agrupa vários métodos e comportamentos semelhantes das demais Pages.
 
-- PageFactory
+- **PageFactory**
   - Mecanismo relacionado ao padrão de projetos PageObject que realiza a criação da instância de um Page de maneira organizada. Nesta POC, a annotation "FindBy" e o método "initElements" da classe "PageFactory" foram utilizados.
 
-- DriverFactory
+- **DriverFactory**
   - Mecanismo criado para encapsular a criação de drivers independente do seu tipo e do sistema operacional. 
 
-- Singleton (DriverManager)
+- **Singleton (DriverManager)**
   - A classe DriverManager implementa o padrão de projeto Singleton e serve para garantir que apenas uma unica instância do driver é utilizada durante toda a execução dos testes.
 
-- Data Lake Consumer
+- **Data Lake Consumer**
   - O uso de Data Lakes ou ferramentas de TDM servem para garantir que a massa de dados utilizada esteja correta de acordo com a versão corrente do sistema. Nesta POC, simulei o uso de dados de um Data Lake ao criar um client que consome informações de um mock (arquivo data_lake_mock.json) e instancia uma lista de "Products" que são utilizadas durante o teste. Este tipo de mecanismo pode ser substituido por integração à TDMs, serviços de consulta e até mesmo, quando necessário, consulta a banco de dados.
 
-- BDD
-  - O BDD não é automação! FATO! Mas a utilização de frameworks que interpretam a linguagem Gherkin e associa às chamadas das Pages permite com que Casos de Testes escritos neste modelo sejam utilizados como input para execução de testes automatizados. Para esta POC, os cenários de testes foram escritos seguindo a boa prática de não ser um script de teste, ou seja, detalhado demais. Além disto, palavras chaves como "Backgroud" e "Tags" foram utilizadas para realizar o reaproveitamento e melhor uso possível das informações que foram disponibilizadas.
+- **BDD**
+  - *O BDD não é automação de testes! FATO!* Mas a utilização de frameworks que interpretam a linguagem Gherkin e associa às chamadas das Pages permite com que Casos de Testes escritos neste modelo sejam utilizados como input para execução de testes automatizados. Para esta POC, os cenários de testes foram escritos seguindo a boa prática de não ser um script de teste, ou seja, detalhado demais. Além disto, palavras chaves como "Backgroud" e "Tags" foram utilizadas para realizar o reaproveitamento e melhor uso possível das informações que foram disponibilizadas.
 
-- Assert
+- **Assert**
   - Utilizando o JUnit, foi realizada a asserção dos pontos onde os testes deveriam ser validados para garantir que o resultado obtido é igual ao resultado esperado.
 
-- Report Automático
+- **Report Automático**
   - Utilizando o framework "ExtentReports", após cada execução um relatório html é gerado no diretório "test-output" contendo informações sobre o resultado obtido bem como screenshots do último passo de cada cenário. Este relatório possui dashboards para apresentações executivas e também informações detalhadas (stacktrace) dos erros que possam ter ocorrido.
 
-- Gerenciamento de Drivers
+- **Gerenciamento de Drivers**
   - Com o uso do DriverFactory citado acima, esta POC tem alguns mecanismos relacionados à utilização do driver:
-    - Um mecanismo automático de detecção de sistema operacional, onde define o driver de acordo com SO utilizado durante a execução;
+        
+	- Um mecanismo automático de detecção de sistema operacional, onde define o driver de acordo com SO utilizado durante a execução;
 	- Capacidade de definir entre Chrome e Firefox informando apenas o paramêtro de execução "-Dbrowser=firefox" ou "-Dbrowser=chrome" para os respectivos navegadores. *Caso não informado, o navegador padrão é o Chrome*;
 	- Modo de execução headless informando o paramêtro "-Dheadless=true" durante a execução. *Este modo de execução é válido apenas para o Chrome*;
 
-- Logs
+- **Logs**
   - A solução utiliza o framework Logback para armazenar os principais logs de eventos ocorridos durante a execução.  
 
 
